@@ -11852,14 +11852,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate number of students</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> 
 
 <span class="c1"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># TODO: Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="p">[(</span><span class="n">student_data</span><span class="o">.</span><span class="n">passed</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">)])</span>
@@ -11890,7 +11890,7 @@ div#notebook {
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
@@ -12563,9 +12563,9 @@ The SVM model has the best performance and have the highest F1 score. The Traini
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>SVM is the support vector machine. If this linearly separable, we could use data to find the decision boundery which maximize the margin which will make the total seperation as much as possible That is the training for this model. Once we have the decision boundery, we could use it to make prediction.
+<p>SVM is the support vector machine. It take data about previous students(age,gender, family etc), and uses them to form a function aht draws a boundary between the students who passed and not passed. The boundary should be as big as possible so that the margin between of distance between students who pass and fail is maximized. Samples on the margin to support us to generate maximized margin called support vectors. That is why we called it SVM.
 &lt;img src= <a href="https://udacity-github-sync-content.s3.amazonaws.com/_attachments/372/1485363073/SVM_2.png&gt;">https://udacity-github-sync-content.s3.amazonaws.com/_attachments/372/1485363073/SVM_2.png&gt;</a></p>
-<p>If the data are not linearly separable, we could use the kernel trick to convert the non-separabel data to separabel data in a different dimension. The plane we used to project the data is called hyperplane. After that we could find the decision boundery in other hyperplane the traning part is done. Once we have the decision boundery, we could use it make predicion.</p>
+<p>Often, though, it's not easy to draw a decision boundary in low dimensions, so the SVM separates the passing and failing students by translating the data we know about them into a higher dimension where a boundary can be found. That plane is called hyperplane.</p>
 <p>&lt;img src =<a href="https://udacity-github-sync-content.s3.amazonaws.com/_attachments/372/1485363077/data_2d_to_3d_hyperplane.png&gt;">https://udacity-github-sync-content.s3.amazonaws.com/_attachments/372/1485363077/data_2d_to_3d_hyperplane.png&gt;</a></p>
 
 </div>
@@ -12597,7 +12597,7 @@ The SVM model has the best performance and have the highest F1 score. The Traini
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -12645,10 +12645,10 @@ The SVM model has the best performance and have the highest F1 score. The Traini
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>{&#39;kernel&#39;: &#39;rbf&#39;, &#39;C&#39;: 0.5}
-Made predictions in 0.0062 seconds.
-Tuned model has a training F1 score of 0.8212.
-Made predictions in 0.0018 seconds.
-Tuned model has a testing F1 score of 0.7417.
+Made predictions in 0.0053 seconds.
+Tuned model has a training F1 score of 0.8367.
+Made predictions in 0.0028 seconds.
+Tuned model has a testing F1 score of 0.7792.
 </pre>
 </div>
 </div>
@@ -12673,7 +12673,7 @@ Tuned model has a testing F1 score of 0.7417.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>The F<sub>1</sub> score for training is 0.8212 and testing is 0.7417. The training score is better, but the testing score is worse</p>
+<p>The F<sub>1</sub> score for training is 0.8367 and testing is 0.7792. The training score is better, but the testing score is worse</p>
 
 </div>
 </div>
